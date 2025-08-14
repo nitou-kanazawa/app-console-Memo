@@ -1,6 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using MemoApp.Infrastructure.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<MemoDbContext>(options =>
+    options.UseSqlite("Data Source=memo.db"));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
